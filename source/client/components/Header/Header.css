@@ -1,0 +1,30 @@
+.header {
+    background-color: var(--pallete-color14);
+    padding: 0 16px;
+}
+
+.header ul {
+    display: flex;
+    margin: 0;
+}
+
+.header li {
+    list-style: none;
+    margin: 0;
+}
+
+.header a {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif, Arial;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 22px 15px;
+    text-decoration: none;
+    color: var(--pallete-color1);
+}
+
+.header a.active {
+    background-color: var(--pallete-color7);
+    color: var(--pallete-color1);
+}

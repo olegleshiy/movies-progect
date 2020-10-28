@@ -1,0 +1,58 @@
+@import '~antd/dist/antd.css';
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+:root {
+    --pallete-color1: #ffffff;
+    --pallete-color2: #000000;
+    --pallete-color3: #ff0000;
+    --pallete-color4: #008000;
+    --pallete-color5: #0000ff;
+    --pallete-color6: #e3e3e3;
+    --pallete-color7: #3737db;
+    --pallete-color8: #94b1ee;
+    --pallete-color9: #132f61;
+    --pallete-color10: #dc143c;
+    --pallete-color11: #09132d;
+    --pallete-color12: #035203;
+    --pallete-color13: #5f667b;
+    --pallete-color14: #001529;
+    --pallete-color15: #808080;
+    --pallete-color16: #90949c;
+    --pallete-color17: #e1e2e3;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif, Arial;
+    font-size: 16px;
+}
+
+#root {
+    height: 100%;
+}
+
+.wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
