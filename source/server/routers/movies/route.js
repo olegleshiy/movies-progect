@@ -5,6 +5,7 @@ const path = require('path');
 
 // Instruments
 const { Movies } = require('../../controllers');
+const { removedFile, removeDuplicateOfString, isFindEqualsObject } = require('../../helpers/funtions');
 
 const debug = dg('router:movies');
 
@@ -38,26 +39,41 @@ const postFile = async (req, res) => {
 
     try {
         if (req.file) {
+            const modelCheck = new Movies();
+            const { data } = await modelCheck.getAll();
 
             const pathFile = path.resolve(__dirname, `../../uploads/${ req.file.filename }`);
-
             const file = fs.readFileSync(pathFile, 'utf8').trim();
+            const currentYear = new Date().getFullYear();
 
             const transform = movie => movie.split('\n').reduce((obj, line) => {
                 const [prop, value] = line.split(': ');
-                return { ...obj, [prop.trim().replace('Release Year', 'release').toLowerCase()]: value.trim() };
+                if(!prop || !value) {
+                    removedFile(pathFile);
+                }
+                return {
+                    ...obj,
+                    [prop.trim().replace('Release Year', 'release').toLowerCase()]: value
+                };
             }, {});
 
-            const arr = file.split('\n\n').map(transform);
+            const arr = file
+                .split('\n\n')
+                .map(transform);
 
-            fs.unlink(pathFile, (err) => {
-                if (err) throw err;
-                debug(`${pathFile} was deleted`);
-            });
-            const model = new Movies(arr);
-            const data = await model.create();
+            const filteredObjectByDate = arr
+                .filter(el => el.release > 1849 && el.release <= currentYear)
+                .map(el => {el.stars = removeDuplicateOfString(el.stars); return el;});
 
-            res.status(201).json({ data });
+            removedFile(pathFile);
+
+            const filteredObjectByIsEquals = filteredObjectByDate
+                .filter(obj => !isFindEqualsObject(data, obj, 'format'));
+
+            const model = new Movies(filteredObjectByIsEquals);
+            const result = await model.create();
+
+            res.status(201).json({ data: result });
         }
 
     } catch (error) {

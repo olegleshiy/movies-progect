@@ -6,7 +6,6 @@
 
 .input-field {
   display: block;
-  margin-bottom: 15px;
   font-family: 'Montserrat', sans-serif, Arial;
   font-size: 16px;
   color: var(--pallete-color11);
@@ -26,7 +25,7 @@
 .select-field:invalid {
   color: var(--pallete-color13);
 }
-
+.select-field.invalidInput,
 .invalidInput {
   border: 1px solid var(--pallete-color3);
 }
@@ -82,6 +81,20 @@
 
 .btn-download button:hover {
   background-color: var(--pallete-color12);
+}
+
+.field-wrapper {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.field-wrapper .error-message {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-family: 'Montserrat', sans-serif, Arial;
+  font-size: 14px;
+  color: var(--pallete-color3);
 }
 
 .inputfile {

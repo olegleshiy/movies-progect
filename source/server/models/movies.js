@@ -8,7 +8,7 @@ class Movie {
     async getAll() {
         const data = await movies
             .find({})
-            .select('-__v -_id -modified');
+            .select('hash title stars format release');
 
         return {
             data
@@ -16,7 +16,7 @@ class Movie {
     }
 
     async create() {
-        if(Array.isArray(this.data)) {
+        if (Array.isArray(this.data)) {
 
             return await movies.create(this.data);
 
@@ -28,7 +28,7 @@ class Movie {
                 title: title,
                 release: release,
                 format: format,
-                stars: stars,
+                stars: stars
             });
         }
     }

@@ -15,7 +15,6 @@ const MoviesTable = ({ movies, getMovies, deleteMovie, showMovieItem, movieItem,
     const searchInput = useRef();
 
     useEffect(() => {
-        console.log('render');
         getMovies();
     },[]);
 

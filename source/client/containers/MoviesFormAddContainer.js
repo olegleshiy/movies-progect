@@ -6,6 +6,7 @@ import { createMovie, downloadMoviesFile } from '../bll/movies/thunk';
 
 const mapStateToProps = state => ({
     fetching: state.ui.fetching,
+    movies: state.moviesPage.movies,
     error: state.ui.error,
 });
 
