@@ -8,7 +8,7 @@ class Movie {
     async getAll() {
         const data = await movies
             .find({})
-            .select('hash title stars format release');
+            .select('hash title stars format release -_id');
 
         return {
             data

@@ -3,12 +3,12 @@ import { api } from '../../../REST';
 import { actions as uiActions } from '../../ui/actions';
 import { actions } from '../actions';
 
-export function getMovies () {
+export function getMovies (signal) {
     return async (dispatch) => {
         try {
             dispatch(uiActions.fetchingStart());
 
-            const response = await api.movies.getAll();
+            const response = await api.movies.getAll(signal);
             const { data } = response;
 
             if (response.status !== 200) {

@@ -50,6 +50,7 @@ const postFile = async (req, res) => {
                 const [prop, value] = line.split(': ');
                 if(!prop || !value) {
                     removedFile(pathFile);
+                    return;
                 }
                 return {
                     ...obj,

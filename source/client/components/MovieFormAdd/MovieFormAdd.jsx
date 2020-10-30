@@ -1,5 +1,5 @@
 // Core
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import cx from 'classnames';
 
@@ -12,11 +12,6 @@ import { Notification } from '../Notification';
 const MovieFormAdd = (props) => {
     const inputFile = useRef();
     const [disabled, setDisabled] = useState(true);
-    const [movies, setMovies] = useState([]);
-
-    useEffect(() => {
-        setMovies(props.movies);
-    }, [movies]);
 
     const handleFileSubmit = () => {
         const data = new FormData();
@@ -33,7 +28,7 @@ const MovieFormAdd = (props) => {
     }
 
     const handleSubmit = (values, actions) => {
-        if(isFindEqualsObject(movies, values, 'format')){
+        if(isFindEqualsObject(props.movies, values, 'format')){
             actions.setSubmitting(false);
             Notification('topRight', 'error', `This film already exist`);
         } else {

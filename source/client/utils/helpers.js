@@ -14,7 +14,7 @@ export function removeDuplicateOfString(str) {
 export function isFindEqualsObject(arrayOfObjects, obj, ignoreKey) {
     const objectFiltered = arrayOfObjects
         .filter(item => item.title === obj.title)
-        .map(el => {delete el.hash; delete el._id; return el} );
+        .map(el => {delete el.hash; return el} );
 
     return objectFiltered.some(item => {
         const keysFirstObj = Object.keys(item);
