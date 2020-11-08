@@ -149,4 +149,11 @@ export const movies = [
         format: 'Blu-Ray',
         stars: 'Seth Rogen, Katherine Heigl, Paul Rudd, Leslie Mann',
     },
-]
+];
+
+export const targetObject = {
+    title: 'Harvey',
+    release: 1950,
+    format: 'DVD',
+    stars: 'James Stewart, Josephine Hull, Peggy Dow, Charles Drake',
+};

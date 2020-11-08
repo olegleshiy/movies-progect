@@ -16,6 +16,7 @@ const MovieFormAdd = (props) => {
     const handleFileSubmit = () => {
         const data = new FormData();
         data.append('file', inputFile.current.files[0]);
+        console.log('DAta', data);
         props.downloadMoviesFile(data);
     }
 
